@@ -14,6 +14,7 @@ import {
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
 import { oneDark } from '@codemirror/theme-one-dark'
+import { nord } from 'cm6-theme-nord'
 
 export const transparentTheme = EditorView.theme({
   '&': {
@@ -22,20 +23,85 @@ export const transparentTheme = EditorView.theme({
   }
 })
 
+export const nordTheme = EditorView.theme(
+  {
+    '&': {
+      color: '#e0def4',
+      backgroundColor: '#1f1d2e'
+    },
+
+    '.cm-content': {
+      caretColor: '#f6c177'
+    },
+
+    '&.cm-focused .cm-cursor': { borderLeftColor: '#e0def4' },
+    '&.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection':
+      { backgroundColor: '#f6c177' },
+
+    '.cm-panels': { backgroundColor: '#9ccfd8', color: '#f6c177' },
+    '.cm-panels.cm-panels-top': { borderBottom: '2px solid black' },
+    '.cm-panels.cm-panels-bottom': { borderTop: '2px solid black' },
+
+    '.cm-searchMatch': {
+      backgroundColor: '#ebbcba',
+      outline: '1px solid #eb6f92'
+    },
+    '.cm-searchMatch.cm-searchMatch-selected': {
+      backgroundColor: '#6199ff2f'
+    },
+
+    '.cm-activeLine': { backgroundColor: '#2c313a' },
+    '.cm-selectionMatch': { backgroundColor: '#eb6f92' },
+
+    '.cm-matchingBracket, .cm-nonmatchingBracket': {
+      backgroundColor: '#bad0f847',
+      outline: '1px solid #515a6b'
+    },
+
+    '.cm-gutters': {
+      backgroundColor: '#1f1d2e',
+      color: '#e0def4',
+      border: 'none'
+    },
+
+    '.cm-activeLineGutter': {
+      backgroundColor: '#eb6f92'
+    },
+
+    '.cm-foldPlaceholder': {
+      backgroundColor: 'transparent',
+      border: 'none',
+      color: '#ddd'
+    },
+
+    '.cm-tooltip': {
+      border: '1px solid #181a1f',
+      backgroundColor: '#2e3440'
+    },
+    '.cm-tooltip-autocomplete': {
+      '& > ul > li[aria-selected]': {
+        backgroundColor: '#2c313a',
+        color: '#d8dee9'
+      }
+    }
+  },
+  { dark: true }
+)
+
 const syntaxHighlighting = HighlightStyle.define([
   {
     tag: tags.heading1,
-    fontSize: '1.6em',
-    fontWeight: 'bold'
-  },
-  {
-    tag: tags.heading2,
     fontSize: '1.4em',
     fontWeight: 'bold'
   },
   {
-    tag: tags.heading3,
+    tag: tags.heading2,
     fontSize: '1.2em',
+    fontWeight: 'bold'
+  },
+  {
+    tag: tags.heading3,
+    fontSize: '1em',
     fontWeight: 'bold'
   }
 ])
@@ -73,6 +139,8 @@ const useCodeMirror = <T extends Element>(
           codeLanguages: languages,
           addKeymap: true
         }),
+        nordTheme,
+        nord,
         oneDark,
         transparentTheme,
         syntaxHighlighting,

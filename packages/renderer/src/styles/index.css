@@ -1,7 +1,13 @@
 html,
 body {
-  background-color: transparent;
+  background-color: rgb(21, 20, 20);
   height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent;
 }
 
 body {

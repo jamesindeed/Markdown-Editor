@@ -5,8 +5,14 @@ import { URL } from 'url'
 async function createWindow() {
   const browserWindow = new BrowserWindow({
     show: false, // Use 'ready-to-show' event to show window
-    vibrancy: 'under-window',
-    visualEffectState: 'followWindow',
+    // vibrancy: 'under-window',
+    // visualEffectState: 'active',
+    // titleBarStyle: 'hidden',
+    // transparent: true,
+    // titleBarOverlay: {
+    //   color: '#2f3241',
+    //   symbolColor: '#74b1be'
+    // },
     autoHideMenuBar: true,
     webPreferences: {
       nativeWindowOpen: true,
